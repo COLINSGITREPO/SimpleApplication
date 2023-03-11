@@ -1,4 +1,4 @@
-#!user/bin/env bash
+#!/usr/bin/env bash
 sudo apt update && sudo apt install nodejs npm
 # install pm2 which is a production process manager for node.js with a built-in load balancer
 sudo npm install -g pm2
