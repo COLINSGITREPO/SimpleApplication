@@ -27,6 +27,7 @@ jobs:
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@8.19.2'
+          post: - cp config/blah.foo.yml config/foo.yml
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
