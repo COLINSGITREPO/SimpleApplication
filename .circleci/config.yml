@@ -23,11 +23,10 @@ jobs:
     docker:
       - image: circleci/node:latest
     steps:
-      - checkout
+      - checkout:
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@8.19.2'
-          post: - cp config/blah.foo.yml config/foo.yml
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
@@ -47,3 +46,4 @@ jobs:
       - run:
           name: deploy-application
           command: ssh -o StrictHostKeyChecking=no $EC2_USERNAME@$EC2_PUBLIC_DNS "export SERVER=\"$SERVER\"; export PRIVATE_KEY=\"$PRIVATE_KEY\"; rm -rf SimpleApplication/; git clone https://github.com/COLINSGITREPO/SimpleApplication.git; source SimpleApplication/deploy.sh"
+          # deployment succesful
