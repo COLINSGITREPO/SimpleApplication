@@ -24,8 +24,6 @@ jobs:
       - image: circleci/node:latest
     steps:
       - checkout
-          post: 
-            - cp config/blah.foo.yml config/foo.yml
       - run:
           name: update-npm
           command: 'sudo npm install -g npm@8.19.2'
